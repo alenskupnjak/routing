@@ -9,6 +9,7 @@ import { DetaljlisteComponent } from './lista/lista/detaljliste/detaljliste.comp
 import { ListaComponent } from './lista/lista/lista.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { Routes, RouterModule, Router } from '@angular/router';
+import { AuthGuard } from './auth-guard.service';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,7 +17,7 @@ const appRoutes: Routes = [
     {path: ':id/:name', component: UserComponent}
   ]},
 
-  {path: 'servers', component: ServersComponent, children: [
+  {path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children: [
     {path: ':id', component: ServerComponent},
     {path: ':id/edit', component: EditServerComponent},
   ]},
