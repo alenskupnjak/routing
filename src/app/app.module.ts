@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -15,24 +14,9 @@ import { ServersService } from './servers/servers.service';
 import { ListaComponent } from './lista/lista/lista.component';
 import { DetaljlisteComponent } from './lista/lista/detaljliste/detaljliste.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing.module';
 
-const appRoutes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'users', component: UsersComponent, children:[
-    {path: ':id/:name', component: UserComponent}
-  ]},
 
-  {path: 'servers', component: ServersComponent, children: [
-    {path: ':id', component: ServerComponent},
-    {path: ':id/edit', component: EditServerComponent},
-  ]},
-  {path: 'lista', component: ListaComponent},
-  {path: 'lista/:id/:name/:status', component: DetaljlisteComponent},
-  {path: 'not-found', component: PageNotFoundComponent},
-
-  // '**' mora biti zadnji u nizu !!!
-  {path: '**', redirectTo: '/not-found'},
-];
 
 
 
@@ -53,7 +37,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [ServersService],
   bootstrap: [AppComponent]
