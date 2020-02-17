@@ -14,6 +14,11 @@ export class ServersService {
       id: 3,
       name: 'Devserver',
       status: 'offline'
+    },
+    {
+      id: 3,
+      name: 'Sreeee',
+      status: 'offline'
     }
   ];
 
@@ -37,6 +42,7 @@ export class ServersService {
       }
     );
     if (server) {
+      console.log('server.id= ' + server.id);
       server.name = serverInfo.name;
       server.status = serverInfo.status;
     }

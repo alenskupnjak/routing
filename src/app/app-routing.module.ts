@@ -10,10 +10,13 @@ import { ListaComponent } from './lista/lista/lista.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { Routes, RouterModule, Router } from '@angular/router';
 import { AuthGuard } from './auth-guard.service';
+import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { ServerReslover } from './servers/server/server-resolver.service';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'users', component: UsersComponent, children:[
+  {path: 'users', component: UsersComponent, children: [
     {path: ':id/:name', component: UserComponent}
   ]},
 
@@ -22,11 +25,12 @@ const appRoutes: Routes = [
   canActivateChild: [AuthGuard],
   component: ServersComponent,
   children: [
-    {path: ':id', component: ServerComponent},
-    {path: ':id/edit', component: EditServerComponent},
+    {path: ':id', component: ServerComponent, resolve: {server: ServerReslover}},
+    {path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard]},
   ]},
   {path: 'lista', component: ListaComponent},
-  {path: 'lista/:id/:name/:status', component: DetaljlisteComponent},
+  // {path: 'lista/:id/:name/:status', component: DetaljlisteComponent},
+  {path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'}},
   {path: 'not-found', component: PageNotFoundComponent},
 
   // '**' mora biti zadnji u nizu !!!
@@ -42,4 +46,4 @@ const appRoutes: Routes = [
 
 export class AppRoutingModule {
 
- }
+}

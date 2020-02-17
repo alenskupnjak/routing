@@ -2,19 +2,19 @@
   <div class="col-xs-12 col-sm-4">
     <div class="list-group">
       <a
-        [routerLink]="['/servers', server.id]"
-        [queryParams] = "{allowedit: server.id === 3 ? '1' :'0'}"
+        [routerLink]="['/servers', data.id]"
+        [queryParams] ="{allowEdit: data.id === 3 ? '1' : '0'}"
         fragment="loading"
         href="#"
         class="list-group-item"
-        *ngFor="let server of servers">
-        {{ server.name }}
+        *ngFor="let data of servers">
+        {{ data.name }}
       </a>
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
     <!--  <router-outlet> za child componente-->
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
     <!-- <a routerLink='/servers'>Reloda page</a> -->
     <!-- <button class="btn btn-primary" (click)="onReload()">Reload</button> -->
     <!-- <button class="btn btn-primary" (click)="onReloadEdit()">Reload Edit</button> -->
