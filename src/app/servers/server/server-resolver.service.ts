@@ -10,11 +10,9 @@ interface Server {
 }
 
 @Injectable()
-
-export class ServerReslover implements Resolve<{Server}> {
+export class ServerReslover implements Resolve<Server> {
   constructor(private serversService: ServersService) {}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Server> | Promise<Server> | Server {
-
     return this.serversService.getServer(+route.params['id']);
   }
 }
