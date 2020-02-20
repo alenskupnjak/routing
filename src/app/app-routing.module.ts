@@ -29,7 +29,7 @@ const appRoutes: Routes = [
     {path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard]},
   ]},
   {path: 'lista', component: ListaComponent},
-  // {path: 'lista/:id/:name/:status', component: DetaljlisteComponent},
+  {path: 'lista/:id/:name/:status', component: DetaljlisteComponent},
   {path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'}},
   {path: 'not-found', component: PageNotFoundComponent},
 

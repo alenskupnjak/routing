@@ -18,6 +18,7 @@ import { AuthGuard } from './auth-guard.service';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ServerReslover} from './servers/server/server-resolver.service';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -33,7 +34,8 @@ import { ServerReslover} from './servers/server/server-resolver.service';
     ListaComponent,
     DetaljlisteComponent,
     PageNotFoundComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
